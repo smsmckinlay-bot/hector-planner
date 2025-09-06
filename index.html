@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hector's Weekly Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="p-4 pb-20">
+
+    <div class="max-w-md mx-auto">
+        <div id="daily-plan-view" class="view active">
+            <header class="text-center mb-4">
+                <h1 class="text-3xl font-bold text-slate-800">Hector's Daily Plan</h1>
+                <p id="current-date-display" class="text-lg text-slate-600">Loading...</p>
+            </header>
+            <nav class="flex justify-between mb-4">
+                <button id="prev-day-btn" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-blue-700"> &larr; Previous Day </button>
+                <button id="next-day-btn" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-blue-700"> Next Day &rarr; </button>
+            </nav>
+            <main id="plan-container"></main>
+        </div>
+
+        <div id="heatmap-view" class="view">
+             <header class="text-center mb-4">
+                <h1 class="text-3xl font-bold text-slate-800">Progress Heatmap</h1>
+                <p id="heatmap-month-display" class="text-lg text-slate-600">Loading...</p>
+            </header>
+            <nav class="flex justify-between mb-4">
+                <button id="prev-month-btn" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-blue-700"> &larr; Prev Month </button>
+                <button id="next-month-btn" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-blue-700"> Next Month &rarr; </button>
+            </nav>
+            <main id="heatmap-container">
+                <div class="heatmap-grid mb-2">
+                    <div class="heatmap-day-name">Mon</div><div class="heatmap-day-name">Tue</div><div class="heatmap-day-name">Wed</div>
+                    <div class="heatmap-day-name">Thu</div><div class="heatmap-day-name">Fri</div><div class="heatmap-day-name">Sat</div>
+                    <div class="heatmap-day-name">Sun</div>
+                </div>
+                <div id="heatmap-grid" class="heatmap-grid"></div>
+            </main>
+        </div>
+    </div>
+
+    <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg max-w-md mx-auto border-t">
+        <div class="flex justify-around">
+            <button id="nav-plan" class="w-full text-center p-4 text-blue-600 border-t-4 border-blue-600">Daily Plan</button>
+            <button id="nav-heatmap" class="w-full text-center p-4 text-gray-500 border-t-4 border-transparent">Heatmap</button>
+        </div>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
