@@ -18,8 +18,8 @@ const weeklyPlan = [
 
 const initialMealIdeas = ["Mindful Chef (Mon–Wed)", "Steak & veg (+ sweet potato)", "Steak wrap", "Stuffed pepper or aubergine with spicy mince", "Lettuce-wrap tacos with mince & veg", "Chicken stir fry", "Baked chicken thighs with veg", "Spaghetti bolognese", "Family meal (Sun)"];
 
-let currentDate = new Date('2025-09-07T10:54:09');
-let heatmapDate = new Date('2025-09-07T10:54:09');
+let currentDate = new Date('2025-09-07T11:00:11');
+let heatmapDate = new Date('2025-09-07T11:00:11');
 let trackingData = {};
 let mealIdeas = [];
 
@@ -94,7 +94,7 @@ function switchView(viewId) {
     document.getElementById(`nav-${activeBtnId}`).classList.add('active');
 
     if (viewId === 'heatmap-view') renderHeatmap(heatmapDate);
-    if (viewId === 'meal-ideas-view') renderMealIdeas();
+    if (viewId === 'meal-ideas-view') renderMealIdeas(); // This line was added
 }
 
 function renderPlan(date) {
@@ -118,29 +118,4 @@ function renderHeatmap(date) {
     const firstDay = new Date(year, month, 1), daysInMonth = new Date(year, month + 1, 0).getDate();
     let startingDay = firstDay.getDay(); if (startingDay === 0) startingDay = 7;
     for (let i = 1; i < startingDay; i++) { grid.insertAdjacentHTML('beforeend', '<div></div>'); }
-    for (let i = 1; i <= daysInMonth; i++) {
-        const dateKey = formatDateForId(new Date(year, month, i)), dayData = trackingData[dateKey];
-        let level = 'heatmap-level-0';
-        if (dayData) {
-            const metCount = Object.values(dayData).filter(s => s === 'met').length;
-            const missedCount = Object.values(dayData).filter(s => s === 'missed').length;
-            if (missedCount > 0 && metCount === 0) { level = 'heatmap-missed'; }
-            else if (metCount > 0) { level = `heatmap-level-${metCount}`; }
-        }
-        grid.insertAdjacentHTML('beforeend', `<div class="heatmap-day ${level}">${i}</div>`);
-    }
-}
-
-function renderMealIdeas() {
-    const list = document.getElementById('meal-list');
-    list.innerHTML = '';
-    mealIdeas.forEach(meal => {
-        const li = document.createElement('li');
-        li.textContent = meal;
-        list.appendChild(li);
-    });
-}
-
-function formatDateForId(date) {
-    return date.toISOString().split('T')[0];
-}
+    for (let i = 1; i
