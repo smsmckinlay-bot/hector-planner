@@ -16,8 +16,8 @@
                 <p id="current-date-display" class="text-lg text-slate-600">Loading...</p>
             </header>
             <nav class="flex justify-between mb-4">
-                <button id="prev-day-btn" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-blue-700"> &larr; Previous Day </button>
-                <button id="next-day-btn" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-blue-700"> Next Day &rarr; </button>
+                <button id="prev-day-btn" class="btn"> &larr; Previous Day </button>
+                <button id="next-day-btn" class="btn"> Next Day &rarr; </button>
             </nav>
             <main id="plan-container"></main>
         </div>
@@ -28,8 +28,8 @@
                 <p id="heatmap-month-display" class="text-lg text-slate-600">Loading...</p>
             </header>
             <nav class="flex justify-between mb-4">
-                <button id="prev-month-btn" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-blue-700"> &larr; Prev Month </button>
-                <button id="next-month-btn" class="bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow hover:bg-blue-700"> Next Month &rarr; </button>
+                <button id="prev-month-btn" class="btn"> &larr; Prev Month </button>
+                <button id="next-month-btn" class="btn"> Next Month &rarr; </button>
             </nav>
             <main id="heatmap-container">
                 <div class="heatmap-grid mb-2">
@@ -40,12 +40,28 @@
                 <div id="heatmap-grid" class="heatmap-grid"></div>
             </main>
         </div>
+
+        <div id="meal-ideas-view" class="view">
+            <header class="text-center mb-4">
+               <h1 class="text-3xl font-bold text-slate-800">Meal Ideas</h1>
+               <p class="text-lg text-slate-600">A list of potential dinner meals</p>
+           </header>
+           <main>
+                <ul id="meal-list" class="space-y-2">
+                    </ul>
+                <form id="add-meal-form" class="mt-6">
+                    <input type="text" id="new-meal-input" placeholder="Add a new meal idea..." class="w-full p-2 border border-gray-300 rounded-lg" required>
+                    <button type="submit" class="btn w-full mt-2">Add Meal</button>
+                </form>
+           </main>
+       </div>
     </div>
 
     <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg max-w-md mx-auto border-t">
         <div class="flex justify-around">
-            <button id="nav-plan" class="w-full text-center p-4 text-blue-600 border-t-4 border-blue-600">Daily Plan</button>
-            <button id="nav-heatmap" class="w-full text-center p-4 text-gray-500 border-t-4 border-transparent">Heatmap</button>
+            <button id="nav-plan" class="nav-btn active">Daily Plan</button>
+            <button id="nav-heatmap" class="nav-btn">Heatmap</button>
+            <button id="nav-meals" class="nav-btn">Meal Ideas</button>
         </div>
     </nav>
 
