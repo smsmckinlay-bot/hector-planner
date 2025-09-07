@@ -1,7 +1,7 @@
 // --- DATA ---
 const weeklyPlan = [
     // Sunday
-    { day: "Sunday", academic: { title: "No College", details: [] }, exercise: { title: "Exercise", details: ["<strong>Activity:</strong> Rugby Match"] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Eggs", "<strong>Lunch:</strong> Wrap / chicken & rice / sushi / stir fry / jacket potato + cheese (tortellini pre-match ok)", "<strong>Dinner:</strong> Family meal (Cheat day)"] } },
+    { day: "Sunday", academic: { title: "Academics", details: ["<strong>17:00–18:00:</strong> Home study"] }, exercise: { title: "Exercise", details: ["<strong>Activity:</strong> Rugby Match"] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Eggs", "<strong>Lunch:</strong> Wrap / chicken & rice / sushi / stir fry / jacket potato + cheese (tortellini pre-match ok)", "<strong>Dinner:</strong> Family meal (Cheat day)"] } },
     // Monday
     { day: "Monday", academic: { title: "Academics", details: ["<strong>08:30:</strong> Leave for College", "<strong>09:00–14:25:</strong> Classes", "<strong>18:30–20:10:</strong> Home study"] }, exercise: { title: "Exercise", details: ["<strong>Activity:</strong> Rest Day"] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Protein porridge", "<strong>Lunch:</strong> Late steak + veg at home + protein snack", "<strong>Dinner:</strong> Mindful Chef"] } },
     // Tuesday
@@ -18,8 +18,8 @@ const weeklyPlan = [
 
 const initialMealIdeas = ["Mindful Chef (Mon–Wed)", "Steak & veg (+ sweet potato)", "Steak wrap", "Stuffed pepper or aubergine with spicy mince", "Lettuce-wrap tacos with mince & veg", "Chicken stir fry", "Baked chicken thighs with veg", "Spaghetti bolognese", "Family meal (Sun)"];
 
-let currentDate = new Date('2025-09-07T10:49:59');
-let heatmapDate = new Date('2025-09-07T10:49:59');
+let currentDate = new Date('2025-09-07T10:54:09');
+let heatmapDate = new Date('2025-09-07T10:54:09');
 let trackingData = {};
 let mealIdeas = [];
 
