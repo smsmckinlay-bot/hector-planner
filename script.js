@@ -18,8 +18,8 @@ const weeklyPlan = [
 
 const initialMealIdeas = ["Mindful Chef (Mon–Wed)", "Steak & veg (+ sweet potato)", "Steak wrap", "Stuffed pepper or aubergine with spicy mince", "Lettuce-wrap tacos with mince & veg", "Chicken stir fry", "Baked chicken thighs with veg", "Spaghetti bolognese", "Family meal (Sun)"];
 
-let currentDate = new Date('2025-09-07T11:00:11');
-let heatmapDate = new Date('2025-09-07T11:00:11');
+let currentDate = new Date('2025-09-07T11:02:07');
+let heatmapDate = new Date('2025-09-07T11:02:07');
 let trackingData = {};
 let mealIdeas = [];
 
@@ -32,90 +32,7 @@ function initializeApp() {
 }
 
 function setupEventListeners() {
-    // Daily Plan Nav
     document.getElementById('prev-day-btn').addEventListener('click', () => { currentDate.setDate(currentDate.getDate() - 1); renderPlan(currentDate); });
     document.getElementById('next-day-btn').addEventListener('click', () => { currentDate.setDate(currentDate.getDate() + 1); renderPlan(currentDate); });
     document.getElementById('plan-container').addEventListener('click', handleTrackingClick);
-
-    // Heatmap Nav
-    document.getElementById('prev-month-btn').addEventListener('click', () => { heatmapDate.setMonth(heatmapDate.getMonth() - 1); renderHeatmap(heatmapDate); });
-    document.getElementById('next-month-btn').addEventListener('click', () => { heatmapDate.setMonth(heatmapDate.getMonth() + 1); renderHeatmap(heatmapDate); });
-
-    // Bottom Nav
-    document.getElementById('nav-plan').addEventListener('click', () => switchView('daily-plan-view'));
-    document.getElementById('nav-heatmap').addEventListener('click', () => switchView('heatmap-view'));
-    document.getElementById('nav-meals').addEventListener('click', () => switchView('meal-ideas-view'));
-    
-    // Meal Ideas Form
-    document.getElementById('add-meal-form').addEventListener('submit', handleAddMeal);
-}
-
-function loadDataFromStorage() {
-    const savedTrackingData = localStorage.getItem('hectorTrackingData');
-    if (savedTrackingData) trackingData = JSON.parse(savedTrackingData);
-
-    const savedMealIdeas = localStorage.getItem('hectorMealIdeas');
-    mealIdeas = savedMealIdeas ? JSON.parse(savedMealIdeas) : [...initialMealIdeas];
-}
-
-function saveData(key, data) {
-    localStorage.setItem(key, JSON.stringify(data));
-}
-
-function handleTrackingClick(e) {
-    const btn = e.target.closest('.tracking-btn');
-    if (!btn) return;
-    const { category, status } = btn.dataset;
-    const dateKey = formatDateForId(currentDate);
-    if (!trackingData[dateKey]) trackingData[dateKey] = {};
-    trackingData[dateKey][category] = status;
-    renderPlan(currentDate);
-    saveData('hectorTrackingData', trackingData);
-}
-
-function handleAddMeal(e) {
-    e.preventDefault();
-    const input = document.getElementById('new-meal-input');
-    const newMeal = input.value.trim();
-    if (newMeal) {
-        mealIdeas.push(newMeal);
-        saveData('hectorMealIdeas', mealIdeas);
-        renderMealIdeas();
-        input.value = '';
-    }
-}
-
-function switchView(viewId) {
-    document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
-    document.getElementById(viewId).classList.add('active');
-
-    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-    const activeBtnId = viewId.replace('-view', '').replace('daily-', '');
-    document.getElementById(`nav-${activeBtnId}`).classList.add('active');
-
-    if (viewId === 'heatmap-view') renderHeatmap(heatmapDate);
-    if (viewId === 'meal-ideas-view') renderMealIdeas(); // This line was added
-}
-
-function renderPlan(date) {
-    const dateKey = formatDateForId(date);
-    document.getElementById('current-date-display').textContent = date.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-    const dayPlan = weeklyPlan[date.getDay()];
-    document.getElementById('plan-container').innerHTML = `${createPlanCard('academic',dayPlan.academic,dateKey)}${createPlanCard('exercise',dayPlan.exercise,dateKey)}${createPlanCard('nutrition',dayPlan.nutrition,dateKey)}`;
-}
-
-function createPlanCard(category, data, dateKey) {
-    const currentStatus = trackingData[dateKey]?.[category] || 'none';
-    const detailsHtml = data.details.map(d => `<p class="text-gray-700">${d}</p>`).join('');
-    return `<div class="plan-card ${category}"><div class="p-4"><p class="font-bold text-lg text-gray-800">${data.title}</p><div class="mt-2 space-y-1">${detailsHtml}</div><div class="mt-4 pt-4 border-t border-gray-200 flex justify-around"><button data-category="${category}" data-status="met" class="tracking-btn met w-2/5 font-semibold py-2 px-4 rounded-lg bg-gray-200 ${currentStatus==='met'?'selected':''}">✓ Met Goal</button><button data-category="${category}" data-status="missed" class="tracking-btn missed w-2/5 font-semibold py-2 px-4 rounded-lg bg-gray-200 ${currentStatus==='missed'?'selected':''}">✗ Missed Goal</button></div></div></div>`;
-}
-
-function renderHeatmap(date) {
-    document.getElementById('heatmap-month-display').textContent = date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long' });
-    const grid = document.getElementById('heatmap-grid');
-    grid.innerHTML = '';
-    const year = date.getFullYear(), month = date.getMonth();
-    const firstDay = new Date(year, month, 1), daysInMonth = new Date(year, month + 1, 0).getDate();
-    let startingDay = firstDay.getDay(); if (startingDay === 0) startingDay = 7;
-    for (let i = 1; i < startingDay; i++) { grid.insertAdjacentHTML('beforeend', '<div></div>'); }
-    for (let i = 1; i
+    document.getElementById('prev-month-btn').
