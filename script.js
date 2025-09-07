@@ -1,57 +1,125 @@
+// --- DATA ---
 const weeklyPlan = [
-    { day: "Sunday", academic: { title: "Lessons & Home Study", details: ["None scheduled for today."] }, exercise: { title: "Exercise", details: ["<strong>Activity:</strong> Rugby Match"] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Eggs", "<strong>Lunch/Dinner:</strong> Choice of chicken wrap, chicken & rice, sushi, stir fry, etc.", "Sunday is a cheat day, but no potatoes/sweets and only one piece of fruit per day."] } },
-    { day: "Monday", academic: { title: "Lessons & Home Study", details: ["<strong>8:30 AM:</strong> Leave for College", "<strong>9:00 AM - 2:25 PM:</strong> Lessons at college", "<strong>6:30 PM - 8:10 PM:</strong> Home studies"] }, exercise: { title: "Exercise", details: ["<strong>Activity:</strong> Rest Day"] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Protein porridge", "<strong>Lunch:</strong> Protein snack at college", "<strong>Dinner:</strong> Mindful Chef"] } },
-    { day: "Tuesday", academic: { title: "Lessons & Home Study", details: ["<strong>10:50 AM:</strong> Leave for College", "<strong>11:20 AM - 4:45 PM:</strong> Lessons at college", "<strong>1:20 PM - 2:20 PM:</strong> 1 hour of home study at college"] }, exercise: { title: "Exercise", details: ["<strong>Activity:</strong> 5km Run", "Complete before or after college."] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Overnight oats", "<strong>Lunch:</strong> Protein snack + 6-inch sub", "<strong>Dinner:</strong> Mindful Chef"] } },
-    { day: "Wednesday", academic: { title: "Lessons & Home Study", details: ["<strong>10:50 AM:</strong> Leave for College", "<strong>11:20 AM - 3:35 PM:</strong> Lessons at college", "<strong>4:20 PM - 5:20 PM:</strong> Home studies"] }, exercise: { title: "Exercise", details: ["<strong>Activity:</strong> Rugby Training", "<strong>6:00 PM:</strong> Session starts."] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Overnight oats", "<strong>Lunch:</strong> Protein snack + sandwich or wrap", "<strong>Dinner:</strong> Mindful Chef"] } },
-    { day: "Thursday", academic: { title: "Lessons & Home Study", details: ["<strong>8:30 AM:</strong> Leave for College", "<strong>9:00 AM - 2:25 PM:</strong> Lessons at college", "<strong>6:30 PM - 7:30 PM:</strong> Home studies"] }, exercise: { title: "Exercise", details: ["<strong>Activity:</strong> Hard Gym Session", "<strong>8:00 PM:</strong> Session starts."] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Protein porridge", "<strong>Lunch:</strong> Protein snack at college", "<strong>Dinner:</strong> Late lunch at home (steak and veg)"] } },
-    { day: "Friday", academic: { title: "Lessons & Self-Study", details: ["<strong>8:30 AM:</strong> Leave for College", "<strong>9:00 AM - 4:45 PM:</strong> Lessons at college", "<strong>11:15 AM - 12:20 PM & 1:20 PM - 2:25 PM:</strong> Self-study at college"] }, exercise: { title: "Exercise", details: ["<strong>Activity:</strong> Weights/Cardio", "Conditioning session after college."] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Protein porridge", "<strong>Lunch:</strong> Protein snack + 6-inch sub", "<strong>Dinner:</strong> Choice of steak and veg, stuffed pepper, etc."] } },
-    { day: "Saturday", academic: { title: "Lessons & Home Study", details: ["None scheduled for today."] }, exercise: { title: "Exercise", details: ["<strong>Activity:</strong> Deload + Run", "Focus on mobility and a light run."] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Eggs", "<strong>Lunch/Dinner:</strong> Choice of chicken wrap, chicken & rice, sushi, stir fry, etc."] } }
+    // Sunday
+    { day: "Sunday", academic: { title: "No College", details: [] }, exercise: { title: "Rugby", details: [] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Eggs", "<strong>Lunch:</strong> Wrap / chicken & rice / sushi / stir fry / jacket potato + cheese (tortellini pre-match ok)", "<strong>Dinner:</strong> Family meal (Cheat day)"] } },
+    // Monday
+    { day: "Monday", academic: { title: "Academics", details: ["<strong>08:30:</strong> Leave for College", "<strong>09:00–14:25:</strong> Classes", "<strong>18:30–20:10:</strong> Home study"] }, exercise: { title: "Rest Day", details: [] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Protein porridge", "<strong>Lunch:</strong> Late steak + veg at home", "<strong>Dinner:</strong> Mindful Chef"] } },
+    // Tuesday
+    { day: "Tuesday", academic: { title: "Academics", details: ["<strong>10:50:</strong> Leave for College", "<strong>11:20–16:45:</strong> Classes", "<strong>13:20–14:20:</strong> Study at college"] }, exercise: { title: "5km Run", details: ["Before or after college"] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Overnight oats", "<strong>Lunch:</strong> Protein snack + 6-inch Subway", "<strong>Dinner:</strong> Mindful Chef"] } },
+    // Wednesday
+    { day: "Wednesday", academic: { title: "Academics", details: ["<strong>10:50:</strong> Leave for College", "<strong>11:20–15:35:</strong> Classes", "<strong>16:20–17:20:</strong> Home study"] }, exercise: { title: "Rugby Training", details: ["Starts at 18:00"] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Overnight oats", "<strong>Lunch:</strong> Sandwich or wrap", "<strong>Dinner:</strong> Mindful Chef"] } },
+    // Thursday
+    { day: "Thursday", academic: { title: "Academics", details: ["<strong>08:30:</strong> Leave for College", "<strong>09:00–14:25:</strong> Classes", "<strong>18:30–19:30:</strong> Home study"] }, exercise: { title: "Hard Gym", details: ["Starts at 20:00"] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Protein porridge", "<strong>Lunch:</strong> Late steak + veg at home", "<strong>Dinner:</strong> Choice of: steak & veg; taco lettuce wraps; stuffed pepper/aubergine; stir fry"] } },
+    // Friday
+    { day: "Friday", academic: { title: "Academics", details: ["<strong>08:30:</strong> Leave for College", "<strong>09:00–16:45:</strong> Classes", "<strong>11:15–12:20 & 13:20–14:25:</strong> Study at college"] }, exercise: { title: "Conditioning", details: ["Weights / cardio after college"] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Protein porridge", "<strong>Lunch:</strong> Protein snack + 6-inch Subway", "<strong>Dinner:</strong> Choice of: steak & veg; taco lettuce wraps; stuffed pepper/aubergine; stir fry"] } },
+    // Saturday
+    { day: "Saturday", academic: { title: "No College", details: [] }, exercise: { title: "Deload", details: ["Mobility + Run"] }, nutrition: { title: "Nutrition", details: ["<strong>Breakfast:</strong> Eggs", "<strong>Lunch:</strong> Wrap / chicken & rice / sushi / stir fry / jacket potato + cheese", "<strong>Dinner:</strong> Choice of: steak wrap; spag bol; baked chicken thighs + veg"] } }
 ];
 
-let currentDate = new Date('2025-09-06T19:22:38');
-let heatmapDate = new Date('2025-09-06T19:22:38');
+const initialMealIdeas = ["Mindful Chef (Mon–Wed)", "Steak & veg (+ sweet potato)", "Steak wrap", "Stuffed pepper or aubergine with spicy mince", "Lettuce-wrap tacos with mince & veg", "Chicken stir fry", "Baked chicken thighs with veg", "Spaghetti bolognese", "Family meal (Sun)"];
+
+let currentDate = new Date('2025-09-07T10:34:18');
+let heatmapDate = new Date('2025-09-07T10:34:18');
 let trackingData = {};
+let mealIdeas = [];
 
-const dailyPlanView = document.getElementById('daily-plan-view');
-const heatmapView = document.getElementById('heatmap-view');
-const navPlan = document.getElementById('nav-plan');
-const navHeatmap = document.getElementById('nav-heatmap');
-const planContainer = document.getElementById('plan-container');
-const dateDisplay = document.getElementById('current-date-display');
-const prevDayBtn = document.getElementById('prev-day-btn');
-const nextDayBtn = document.getElementById('next-day-btn');
-const heatmapGrid = document.getElementById('heatmap-grid');
-const heatmapMonthDisplay = document.getElementById('heatmap-month-display');
-const prevMonthBtn = document.getElementById('prev-month-btn');
-const nextMonthBtn = document.getElementById('next-month-btn');
+document.addEventListener('DOMContentLoaded', initializeApp);
 
-function formatDateForId(date) { const d = new Date(date); let month = '' + (d.getMonth() + 1), day = '' + d.getDate(); const year = d.getFullYear(); if (month.length < 2) month = '0' + month; if (day.length < 2) day = '0' + day; return [year, month, day].join('-'); }
-function loadDataFromStorage() { const d = localStorage.getItem('hectorTrackingData'); if (d) trackingData = JSON.parse(d); }
-function saveData() { localStorage.setItem('hectorTrackingData', JSON.stringify(trackingData)); }
+function initializeApp() {
+    loadDataFromStorage();
+    renderPlan(currentDate);
+    setupEventListeners();
+}
+
+function setupEventListeners() {
+    // Daily Plan Nav
+    document.getElementById('prev-day-btn').addEventListener('click', () => { currentDate.setDate(currentDate.getDate() - 1); renderPlan(currentDate); });
+    document.getElementById('next-day-btn').addEventListener('click', () => { currentDate.setDate(currentDate.getDate() + 1); renderPlan(currentDate); });
+    document.getElementById('plan-container').addEventListener('click', handleTrackingClick);
+
+    // Heatmap Nav
+    document.getElementById('prev-month-btn').addEventListener('click', () => { heatmapDate.setMonth(heatmapDate.getMonth() - 1); renderHeatmap(heatmapDate); });
+    document.getElementById('next-month-btn').addEventListener('click', () => { heatmapDate.setMonth(heatmapDate.getMonth() + 1); renderHeatmap(heatmapDate); });
+
+    // Bottom Nav
+    document.getElementById('nav-plan').addEventListener('click', () => switchView('daily-plan-view'));
+    document.getElementById('nav-heatmap').addEventListener('click', () => switchView('heatmap-view'));
+    document.getElementById('nav-meals').addEventListener('click', () => switchView('meal-ideas-view'));
+    
+    // Meal Ideas Form
+    document.getElementById('add-meal-form').addEventListener('submit', handleAddMeal);
+}
+
+function loadDataFromStorage() {
+    const savedTrackingData = localStorage.getItem('hectorTrackingData');
+    if (savedTrackingData) trackingData = JSON.parse(savedTrackingData);
+
+    const savedMealIdeas = localStorage.getItem('hectorMealIdeas');
+    mealIdeas = savedMealIdeas ? JSON.parse(savedMealIdeas) : [...initialMealIdeas];
+}
+
+function saveData(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+function handleTrackingClick(e) {
+    const btn = e.target.closest('.tracking-btn');
+    if (!btn) return;
+    const { category, status } = btn.dataset;
+    const dateKey = formatDateForId(currentDate);
+    if (!trackingData[dateKey]) trackingData[dateKey] = {};
+    trackingData[dateKey][category] = status;
+    renderPlan(currentDate);
+    saveData('hectorTrackingData', trackingData);
+}
+
+function handleAddMeal(e) {
+    e.preventDefault();
+    const input = document.getElementById('new-meal-input');
+    const newMeal = input.value.trim();
+    if (newMeal) {
+        mealIdeas.push(newMeal);
+        saveData('hectorMealIdeas', mealIdeas);
+        renderMealIdeas();
+        input.value = '';
+    }
+}
+
+function switchView(viewId) {
+    document.querySelectorAll('.view').forEach(view => view.classList.remove('active'));
+    document.getElementById(viewId).classList.add('active');
+
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+    const activeBtnId = viewId.replace('-view', '').replace('daily-', '');
+    document.getElementById(`nav-${activeBtnId}`).classList.add('active');
+
+    if (viewId === 'heatmap-view') renderHeatmap(heatmapDate);
+    if (viewId === 'meal-ideas-view') renderMealIdeas();
+}
 
 function renderPlan(date) {
     const dateKey = formatDateForId(date);
-    dateDisplay.textContent = date.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    document.getElementById('current-date-display').textContent = date.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
     const dayPlan = weeklyPlan[date.getDay()];
-    planContainer.innerHTML = `${createPlanCard('academic', dayPlan.academic, dateKey)}${createPlanCard('exercise', dayPlan.exercise, dateKey)}${createPlanCard('nutrition', dayPlan.nutrition, dateKey)}`;
+    document.getElementById('plan-container').innerHTML = `${createPlanCard('academic',dayPlan.academic,dateKey)}${createPlanCard('exercise',dayPlan.exercise,dateKey)}${createPlanCard('nutrition',dayPlan.nutrition,dateKey)}`;
 }
 
 function createPlanCard(category, data, dateKey) {
-    if (!data) return '';
-    const currentStatus = trackingData[dateKey]?.[category];
+    const currentStatus = trackingData[dateKey]?.[category] || 'none';
     const detailsHtml = data.details.map(d => `<p class="text-gray-700">${d}</p>`).join('');
-    return `<div class="plan-card ${category}"><div class="p-4"><p class="font-bold text-lg text-gray-800">${data.title}</p><div class="mt-2 space-y-1">${detailsHtml}</div><div class="mt-4 pt-4 border-t border-gray-200 flex justify-around"><button data-category="${category}" data-status="met" class="tracking-btn met w-2/5 font-semibold py-2 px-4 rounded-lg bg-gray-200 ${currentStatus === 'met' ? 'selected' : ''}">✓ Met Goal</button><button data-category="${category}" data-status="missed" class="tracking-btn missed w-2/5 font-semibold py-2 px-4 rounded-lg bg-gray-200 ${currentStatus === 'missed' ? 'selected' : ''}">✗ Missed Goal</button></div></div></div>`;
+    return `<div class="plan-card ${category}"><div class="p-4"><p class="font-bold text-lg text-gray-800">${data.title}</p><div class="mt-2 space-y-1">${detailsHtml}</div><div class="mt-4 pt-4 border-t border-gray-200 flex justify-around"><button data-category="${category}" data-status="met" class="tracking-btn met w-2/5 font-semibold py-2 px-4 rounded-lg bg-gray-200 ${currentStatus==='met'?'selected':''}">✓ Met Goal</button><button data-category="${category}" data-status="missed" class="tracking-btn missed w-2/5 font-semibold py-2 px-4 rounded-lg bg-gray-200 ${currentStatus==='missed'?'selected':''}">✗ Missed Goal</button></div></div></div>`;
 }
 
 function renderHeatmap(date) {
-    heatmapMonthDisplay.textContent = date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long' });
-    heatmapGrid.innerHTML = '';
+    document.getElementById('heatmap-month-display').textContent = date.toLocaleDateString('en-GB', { year: 'numeric', month: 'long' });
+    const grid = document.getElementById('heatmap-grid');
+    grid.innerHTML = '';
     const year = date.getFullYear(), month = date.getMonth();
     const firstDay = new Date(year, month, 1), daysInMonth = new Date(year, month + 1, 0).getDate();
     let startingDay = firstDay.getDay(); if (startingDay === 0) startingDay = 7;
-    for (let i = 1; i < startingDay; i++) { heatmapGrid.insertAdjacentHTML('beforeend', '<div></div>'); }
+    for (let i = 1; i < startingDay; i++) { grid.insertAdjacentHTML('beforeend', '<div></div>'); }
     for (let i = 1; i <= daysInMonth; i++) {
-        const dayDate = new Date(year, month, i), dateKey = formatDateForId(dayDate), dayData = trackingData[dateKey];
+        const dateKey = formatDateForId(new Date(year, month, i)), dayData = trackingData[dateKey];
         let level = 'heatmap-level-0';
         if (dayData) {
             const metCount = Object.values(dayData).filter(s => s === 'met').length;
@@ -59,36 +127,20 @@ function renderHeatmap(date) {
             if (missedCount > 0 && metCount === 0) { level = 'heatmap-missed'; }
             else if (metCount > 0) { level = `heatmap-level-${metCount}`; }
         }
-        heatmapGrid.insertAdjacentHTML('beforeend', `<div class="heatmap-day ${level}">${i}</div>`);
+        grid.insertAdjacentHTML('beforeend', `<div class="heatmap-day ${level}">${i}</div>`);
     }
 }
 
-planContainer.addEventListener('click', e => {
-    const btn = e.target.closest('.tracking-btn'); if (!btn) return;
-    const { category, status } = btn.dataset, dateKey = formatDateForId(currentDate);
-    if (!trackingData[dateKey]) trackingData[dateKey] = {};
-    trackingData[dateKey][category] = status;
-    renderPlan(currentDate);
-    saveData();
-});
+function renderMealIdeas() {
+    const list = document.getElementById('meal-list');
+    list.innerHTML = '';
+    mealIdeas.forEach(meal => {
+        const li = document.createElement('li');
+        li.textContent = meal;
+        list.appendChild(li);
+    });
+}
 
-prevDayBtn.addEventListener('click', () => { currentDate.setDate(currentDate.getDate() - 1); renderPlan(currentDate); });
-nextDayBtn.addEventListener('click', () => { currentDate.setDate(currentDate.getDate() + 1); renderPlan(currentDate); });
-prevMonthBtn.addEventListener('click', () => { heatmapDate.setMonth(heatmapDate.getMonth() - 1); renderHeatmap(heatmapDate); });
-nextMonthBtn.addEventListener('click', () => { heatmapDate.setMonth(heatmapDate.getMonth() + 1); renderHeatmap(heatmapDate); });
-
-navPlan.addEventListener('click', () => {
-    dailyPlanView.classList.add('active'); heatmapView.classList.remove('active');
-    navPlan.classList.add('text-blue-600', 'border-blue-600'); navPlan.classList.remove('text-gray-500', 'border-transparent');
-    navHeatmap.classList.add('text-gray-500', 'border-transparent'); navHeatmap.classList.remove('text-blue-600', 'border-blue-600');
-});
-navHeatmap.addEventListener('click', () => {
-    heatmapView.classList.add('active'); dailyPlanView.classList.remove('active');
-    navHeatmap.classList.add('text-blue-600', 'border-blue-600'); navHeatmap.classList.remove('text-gray-500', 'border-transparent');
-    navPlan.classList.add('text-gray-500', 'border-transparent'); navPlan.classList.remove('text-blue-600', 'border-blue-600');
-    heatmapDate = new Date(currentDate);
-    renderHeatmap(heatmapDate);
-});
-
-function initializeApp() { loadDataFromStorage(); renderPlan(currentDate); }
-initializeApp();
+function formatDateForId(date) {
+    return date.toISOString().split('T')[0];
+}
